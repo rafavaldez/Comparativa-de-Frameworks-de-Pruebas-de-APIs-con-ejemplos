@@ -1,0 +1,372 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx} % figuras
+% \usepackage{subfigure} % subfiguras
+\usepackage{float} % para usar [H]
+\usepackage{amsmath}
+%\usepackage{txfonts}
+\usepackage{stackrel} 
+\usepackage{multirow}
+\usepackage{enumerate} % enumerados
+\renewcommand{\labelitemi}{$-$}
+\renewcommand{\labelitemii}{$\cdot$}
+
+
+
+\title{Comparativa de Frameworks de Pruebas de APIs}
+\date{October 2021}
+\begin{document}
+
+
+
+\begin{titlepage}
+\begin{center}
+\large{UNIVERSIDAD PRIVADA-DE-TACNA}\\
+\vspace*{-0.025in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{./Imagenes/logo}
+\end{center}
+\end{figure}
+\vspace*{0.15in}
+INGENIERIA DE SISTEMAS  \\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.2\textwidth]{logo.png}
+
+\end{figure}
+\vspace*{0.5in}
+\begin{large}
+TITULO:\\
+\end{large}
+
+\vspace*{0.1in}
+\begin{Large}
+\textbf{TRABAJO ENCARGADO 01: FRAMEWORKS DE PRUEBAS} \\
+\end{Large}
+
+\vspace*{0.3in}
+\begin{Large}
+\textbf{CURSO:} \\
+\end{Large}
+
+\vspace*{0.1in}
+\begin{large}
+CALIDAD Y PRUEBAS DE SOFTWARE\\
+\end{large}
+
+\vspace*{0.3in}
+\begin{Large}
+\textbf{DOCENTE(ING):} \\
+\end{Large}
+
+\vspace*{0.1in}
+\begin{large}
+ Patrick Cuadros Quiroga\\
+\end{large}
+
+\vspace*{0.2in}
+\vspace*{0.1in}
+\begin{large}
+Alumnos: \\
+\begin{flushleft}
+
+
+Cutipa Machaca Arnold Felix         	\hfill	(2019064040) \\
+Poma Chura Jhon Romario             	\hfill	(2019064022) \\
+Valdez Apaza Rafael Jesus                \hfill	(2019063317) \\
+Sagua Ramos, Gustavo Alonso               \hfill(2018062254) \\
+Romero Roque, Angelica Beatriz            \hfill(2019063327) \\
+Yucra Mamani, Vanessa                    \hfill(2019063635) \\
+
+
+\end{flushleft}
+\newline
+\begin{center}
+Tacna – Perú
+\end{center}
+\newline
+2021
+
+\end{large}
+\end{center}
+
+\end{titlepage}
+
+\maketitle
+
+\section{Resumen}
+\newline
+\newline En el presente documento se hablará de un tema importante como son los Frameworks de pruebas, abordaremos los framewors como Karate DSL y JMeter, se hablará qué son, ventajas y como aplicarlos. 
+\newline
+También se dará una explicación básica Testing de Software, cada principio y ejemplos prácticos. 
+\newline
+\newline
+En las pruebas de software, la automatización nos permite una ejecución de pruebas más rápida y constante en comparación con las pruebas manuales. En la actualidad, para realizar pruebas automatizadas funcionales se cuenta con herramientas como Selenium, TestNG, Sikuli, Cypress, Watir, TestCafe, WebdriverIO, entre otros. En cada una de estas contamos con opciones para realizar comparaciones entre resultados obtenidos y resultados esperados, y realizar reportes.
+\newline
+\newline
+Un framework se encarga de encapsular funciones genéricas y comunes del software que se requiera, a la vez que estandariza la generación de código. Esto agiliza el alcance de requerimientos para así disminuir el tiempo que se dedica a tareas de bajo nivel requeridas para el proyecto. 
+
+
+\section{Abstract}
+
+In this document we will talk about an important topic such as test Frameworks, we will address framewors such as Karate DSL and JMeter, what they are, advantages and how to apply them will be discussed. A basic explanation of Software Testing, each principle and practical examples will also be given.
+\newline
+\newline
+In software testing, automation enables faster and more consistent test execution compared to manual testing. Currently, to perform automated functional tests, there are tools such as Selenium, TestNG, Sikuli, Cypress, Watir, TestCafe, WebdriverIO, among others. In each of these we have options to make comparisons between obtained results and expected results, and to make reports.
+\newline
+\newline
+A framework is in charge of encapsulating generic and common functions of the software that is required, at the same time that it standardizes the generation of code. This streamlines the scope of requirements to decrease the time spent on low-level tasks required for the project.
+
+\section{Introducción}
+
+El Testing de Software es la realización de pruebas sobre el mismo, con el fin de obtener información acerca de su calidad.
+
+Este proceso tiene varios objetivos bien definidos, como son:
+
+\begin{itemize}
+    \item Encontrar defectos o bugs con el finde ser subsanados.
+    
+    \item Eso nos va a permitir aumentar la confianza en el nivel de calidad del software. Aunque por muchas pruebas que realicemos no vamos a poder afirmar al 100 porciento que ese software no contiene errores, a base de hacer pruebas y subsanar errores, aumentamos nuestra confianza en el mismo.
+    
+    \item Esta calidad nos va a facilitar la toma de decisiones. Por ejemplo, si tenemos una entrega que debe pasar a producción, si tiene muchos defectos y la calidad no es buena, a lo mejor debemos posponerlo y subsanar primero los errores, pero si la calidad es buena y no tiene errores, lo pasamos a producción.
+    
+    \item Evitar la aparición de nuevos efectos, ya que si aumento la calidad de mi software y hacemos las cosas bien, es menos probable que aparezcan nuevos defectos que si hago las cosas de cualquier forma y con una calidad baja.
+    
+    
+\end{itemize} 
+
+\section{Desarrollo}
+
+KARATE DSL
+\newline 
+\newline
+Karate es una herramienta de código abierto que combina la automatización de pruebas de API, mocks, pruebas de rendimiento e incluso la automatización de la interfaz de usuario en un marco único y unificado. Utiliza la sintaxis Gherkin, popularizada por Cucumber, como lenguaje neutro y de fácil comprensión incluso para las personas no técnicas, que se enfoca en el desarrollo guiado por comportamiento (BDD).  
+\newline
+\newline
+\newline
+Funcionalidades principales de Karate:
+\newline
+\begin{itemize}
+ \item Setup inicial sencillo, rápido y directo.
+ \item BDD unificado desde un mismo fichero. No es necesario definir los steps en otras ubicaciones.
+ \item Pruebas simples, concisas, legibles y fáciles de mantener.
+ \item Posibilidad de utilizar clases Java para utilidades complejas o funciones de ayuda que facilita su depuración y mantenibilidad.
+ \item No se requieren conocimientos de programación avanzados. Acciones habituales sobre APIs implementadas mediante lenguaje natural.
+ \item Posibilidad de ejecutar pruebas en paralelo.
+ \item Reutilización de features pudiendo ser usadas como precondiciones o funciones de otros pruebas.
+ \item Implementación sencilla de asertos complejos.
+ \item Soporte nativo para aserciones sobre JSON y XML.
+ \item Permite lectura de ficheros CSV (Data Driven Testing)
+ \item Motor de JavaScript integrado.
+ \item Importación de archivos csv o json con información. En cucumber, las variables están estáticas en una tabla.
+ \item Documentación y ejemplos completos.
+ \item Soporte websockets.Informes HTML completos y muy visuales.
+
+\end{itemize} 
+\newline 
+¿Dónde lo puedes aplicar?
+\newline 
+\newline
+Casos de uso habituales:
+\newline
+Karate es una buena opción cuando se desee disponer de una suite automatizada de pruebas sobre servicios REST y no se precisen acciones excesivamente complejas para realizar dichas comprobaciones.
+Es decir, por su sencillez y facilidad de uso, resulta ideal para disponer rápidamente de una batería completa de pruebas sin apenas conocimientos de programación y utilizando un lenguaje común que puede ser comprendido tanto por la parte técnica como la de negocio. Esto hace que las pruebas sirvan a su vez como documentación funcional del API sobre el que se lanzan las pruebas (concepto de Living documentation).
+\newline 
+\newline
+Dónde no es recomendable:
+\newline 
+En casos donde para la correcta ejecución de las pruebas se requiera un setup complejo de datos o del entorno puede no resultar una buena opción. No tanto porque desde Karate no se puedan realizar dichas acciones, pero a costa de perder su potencial de claridad y sencillez.
+\newline
+\newline
+\newline 
+\newline
+¿Cómo funciona?
+\newline 
+\newline
+Entorno utilizado, prerrequisitos
+Prerrequisitos:
+\begin{itemize}
+    \item Java 8+
+    \item Maven o Gradle
+    \item Eclipse o IntelliJ IDE
+    \newline 
+\end{itemize} 
+\newline 
+\newline 
+\newline\b Setup inicial
+\newline 
+\newline 
+Para un proyecto maven se necesita añadir las siguientes dependencias:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{1.png}
+\caption{\label{fig:1}Setup Inicial}
+\end{figure}
+\newline 
+Para ir viendo las principales funcionalidades de Karate se irán recorriendo los casos de uso más habituales:
+\newline
+\newline 
+GET
+\newline 
+\newline 
+La prueba consiste en obtener un listado de los usuarios del sistema y comprobar que la respuesta es correcta.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{2.png}
+\caption{\label{fig:1}Get}
+\end{figure}
+\newline 
+
+Como se puede observar, existen definiciones constantes como por ejemplo las url que se van a volver a usar en más de una ocasión y que se pueden sacar y definirlas para su uso en toda la feature en el apartado “Background”. Para ello se usa la palabra clave en karate “def”.
+\newline 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{3.png}
+\caption{\label{fig:1}}
+\end{figure}
+Por ejemplo conocer si uno de los usuarios de la lista se llama “Emma” y que los identificadores de todos los usuarios no sean “nulos”.Se puede ampliar esta prueba añadiendo además comprobaciones adicionales sobre el contenido de la respuesta obtenida.
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{4.png}
+\caption{\label{fig:1}}
+\end{figure}
+\newline
+\newline
+POST
+\newline
+\newline
+Este test verifica la creación de un usuario, por lo que debemos añadir un “BODY” a la petición. En este caso, veremos cómo conseguirlo haciendo uso además del concepto de “Scenario Outline” para parametrizar tanto la petición como los resultados esperados en cada caso.
+\newline
+\newline
+Esta forma de realizar pruebas resulta muy útil cuando deseamos ejercitar una misma funcionalidad bajo diferentes casuísticas.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{5.png}
+\caption{\label{fig:1}}
+\end{figure}
+\newline
+\newline
+PUT
+\newline
+\newline
+El siguiente test actualiza el valor de un atributo de un usuario y se comprueba que efectivamente se ha modificado.
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{6.png}
+\caption{\label{fig:1}}
+\end{figure}
+
+\newline
+\endline
+\newline
+\newline
+EJECUCIÓN DE LAS PRUEBAS
+\newline
+\newline
+Para la ejecución de los tests se define una clase Java en la que se configura su rutina así como la ubicación de los features.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{7.png}
+\caption{\label{fig:1}}
+\end{figure}
+\newline
+\newline
+En dicha ejecución, Karate espera que exista un archivo “karate-config.js” con las variables de configuración. En el que se pueden definir variables como el environment o funciones JavaScript reutilizables.
+\newline
+\newline
+Para lanzar la ejecución se puede hacer de dos formas: desde nuestro IDE o por línea de comandos. Para el segundo caso se podrá ejecutar el siguiente comando Maven:
+\newline
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{8.png}
+\caption{\label{fig:1}}
+\end{figure}
+\newline
+\newline
+REPORTES
+\newline
+\newline
+Cuando se ejecutan los tests se genera un informe por cada feature. El informe propuesto por Karate está en formato html y su estructura es la siguiente:
+\newline
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{9.png}
+\caption{\label{fig:1}}
+\end{figure}
+
+
+
+JMETER
+\newline 
+\newline
+JMeter es una herramienta de testing cuyas funcionalidades se pueden resumir en tres:
+
+\begin{itemize}
+    \item Diseñar un testplan, esto es, generar un fichero .jmx
+    \item Ejecutar un testplan
+    \item Ver de distintas formas los resultados de la ejecución de un testplan (vía listeners)
+\end{itemize} 
+\newline 
+Para diseñar un testplan, JMeter dispone de una interfaz GUI a modo de diseñador, en la que el tester puede ir agregando componentes de manera visual, y ejecutar los componentes agregados, viendo el resultado. Una vez finalizado el diseño del testplan, la herramienta permite grabar este como un fichero .jmx.
+\newline
+\newline
+Los datos generados por la herramienta para cada petición se procesan o bien con un tipo de componente que proporciona la interfaz GUI llamados listeners, o bien con herramientas externas. Los listeners permiten ver los resultados de una o mas ejecuciones de múltiples maneras (cada listener de una manera).
+\newline 
+\newline 
+Ventajas e inconvenientes
+\newline 
+\newline 
+JMeter es una herramienta ideal para realizar pruebas de rendimiento de aplicaciones web. Sus principales debilidades son:
+\begin{itemize}
+    \item JMeter NO se comporta como un navegador. Esto tiene varias implicaciones importantes: por defecto no guarda ni envía cookies, no interpreta código JavaScript, … Cualquier funcionalidad de estas debe ser implementada específicamente en el testplan
+    \item Con JMeter el tester trabaja a nivel de protocolos: el desarrollador de un testplan ha de descender a este nivel, por lo que normalmente el tester tiene que apoyarse en herramientas adicionales durante el desarrollo de un testplan, como Firebug, HttpFox, SoapUI, Badboy, ...
+    \item Los tipos de aplicaciones que se pueden testear con JMeter dependen de los protolos que implementen las interfaces de acceso a la aplicación. Con JMeter se pueden testear los siguientes tipos de interfaces: HTTP, HTTPS, SOAP (sobre HTTP), XML-RPC (sobre HTTP), FTP, LDAP, POP3, IMAP, SMTP, JMS, JDBC y TCP. 
+\end{itemize} 
+
+\section{Conclusiones}
+
+Este proceso, aunque como hemos explicado es uno de los elementos más importante en el proceso de desarrollo, a día de hoy sigue siendo uno de los más olvidados por las empresas a la hora de desarrollar un proyecto de software.
+
+Invertir en este tipo de procesos supone una garantía en la calidad del producto y que éste no se lance al mercado con bugs. Esto no quiere decir que no se produzcan defectos que subsanar en fases posteriores, pero sí que serán menos y que tendrán un impacto económico inferior.
+
+Que el gran desafío sea presentar un proyecto de calidad y que la experiencia del usuario final sea satisfactoria.
+
+\section{Recomendaciones}
+
+\begin{itemize}
+    \item Cada caso de prueba debe definir el resultado de salida esperado que se comparará con el realmente obtenido.
+    \item El programador debe evitar probar sus propios programas, ya que desea (consciente o inconscientemente) demostrar que funcionan sin problemas.
+    \item Se debe inspeccionar a conciencia el resultado de cada prueba, para así­, poder descubrir posibles síntomas de defectos.
+    \item Al generar casos de prueba, se deben incluir tanto datos de entrada válidos como no válidos.
+    \item Las pruebas deben centrarse en dos objetivos: probar si el software no hace lo que debe hacer o viceversa, es decir, si provoca efectos secundarios adversos
+    \item No deben hacerse planes de prueba suponiendo que, prácticamente, no hay defectos en los programas y, por lo tanto, dedicando pocos recursos a las pruebas siempre hay defectos.
+    \item La experiencia parece indicar que donde hay un defecto hay otros, es decir, la probabilidad de descubrir nuevos defectos en una parte del software es proporcional al número de defectos ya descubierto.
+    \item Las pruebas son una tarea tanto o más creativa que el desarrollo de software. Siempre se han considerado las pruebas como una tarea destructiva y rutinaria.
+\end{itemize} 
+
+\section{Webgrafia}
+\begin{itemize}
+\item https://apiumhub.com/es/tech-blog-barcelona/karate-framework-testeo-apis/ 
+
+\item https://stackshare.io/karate-dsl/alternatives
+
+\item https://www.iberpixel.com/blog/la-importancia-del-testing-en-el-desarrollo-de-aplicaciones/
+
+\item https://www.sngular.com/es/automatizacion-de-pruebas-con-karate-i/
+\end{itemize} 
+\end{document}
+
+
+\end{document}
